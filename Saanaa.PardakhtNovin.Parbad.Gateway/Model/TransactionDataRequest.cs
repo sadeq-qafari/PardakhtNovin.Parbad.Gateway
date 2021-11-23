@@ -1,9 +1,9 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using Ardalis.GuardClauses;
-    using global::Parbad;
-    using System;
+﻿using System;
+using Ardalis.GuardClauses;
+using Parbad;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
     [Serializable]
     public class TransactionDataRequest
     {

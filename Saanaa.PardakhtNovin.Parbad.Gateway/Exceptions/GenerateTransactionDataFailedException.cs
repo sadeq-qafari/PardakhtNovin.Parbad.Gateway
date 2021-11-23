@@ -1,8 +1,8 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Exceptions
-{
-    using System;
-    using global::Parbad.Options;
+﻿using System;
+using Parbad.Options;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Exceptions
+{
     public class GenerateTransactionDataFailedException : Exception
     {
         public GenerateTransactionDataFailedException(MessagesOptions messagesOptions) : base(messagesOptions.InvalidDataReceivedFromGateway)

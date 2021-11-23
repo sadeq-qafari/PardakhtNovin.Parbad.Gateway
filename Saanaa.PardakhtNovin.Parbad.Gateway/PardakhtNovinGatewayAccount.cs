@@ -1,7 +1,7 @@
-﻿namespace PardakhtNovin.Parbad.Gateway
-{
-    using global::Parbad.Abstraction;
+﻿using Parbad.Abstraction;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway
+{
     public class PardakhtNovinGatewayAccount : GatewayAccount
     {
         public long TerminalId { get; set; }

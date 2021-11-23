@@ -1,10 +1,10 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using System;
+﻿using System;
 
-    public class TransactionRefundResult
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
+    public class VerifyMerchantTransactionResult
     {
-        public bool TransactionRefundedSuccessfully()
+        public bool TransactionVerifiedSuccessfully()
         {
             return string.Equals(Result, "ersucceed", StringComparison.CurrentCultureIgnoreCase);
         }

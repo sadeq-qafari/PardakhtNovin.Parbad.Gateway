@@ -1,4 +1,4 @@
-﻿namespace PardakhtNovin.Parbad.Gateway
+﻿namespace Saanaa.PardakhtNovin.Parbad.Gateway
 {
     public class PardakhtNovinTransactionType
     {

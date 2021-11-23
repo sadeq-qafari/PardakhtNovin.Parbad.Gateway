@@ -1,9 +1,9 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using Ardalis.GuardClauses;
-    using System;
-    using Newtonsoft.Json;
+﻿using System;
+using Ardalis.GuardClauses;
+using Newtonsoft.Json;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
     [Serializable]
     public class WSContext
     {

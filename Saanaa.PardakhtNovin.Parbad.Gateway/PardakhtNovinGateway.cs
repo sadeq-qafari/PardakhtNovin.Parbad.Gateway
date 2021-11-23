@@ -1,24 +1,24 @@
-﻿namespace PardakhtNovin.Parbad.Gateway
-{
-    using global::Parbad;
-    using global::Parbad.Abstraction;
-    using global::Parbad.GatewayBuilders;
-    using global::Parbad.Internal;
-    using global::Parbad.Options;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.Options;
-    using System;
-    using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Ardalis.GuardClauses;
-    using Exceptions;
-    using global::Parbad.Http;
-    using global::Parbad.Net;
-    using Model;
-    using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Parbad;
+using Parbad.Abstraction;
+using Parbad.GatewayBuilders;
+using Parbad.Http;
+using Parbad.Internal;
+using Parbad.Net;
+using Parbad.Options;
+using Saanaa.PardakhtNovin.Parbad.Gateway.Exceptions;
+using Saanaa.PardakhtNovin.Parbad.Gateway.Model;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway
+{
     [Gateway(Name)]
     public class PardakhtNovinGateway : GatewayBase<PardakhtNovinGatewayAccount>
     {

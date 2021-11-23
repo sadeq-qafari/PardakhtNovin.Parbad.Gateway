@@ -1,7 +1,7 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using System;
+﻿using System;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
     public class NovinPardakhtPaymentData
     {
         public string CustomerRefNum;

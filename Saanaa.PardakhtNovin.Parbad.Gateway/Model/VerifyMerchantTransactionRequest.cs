@@ -1,10 +1,10 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
 
-    public class TransactionRefundRequest
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
+    public class VerifyMerchantTransactionRequest
     {
-        public TransactionRefundRequest(WSContext wsContext, string token, string refNum)
+        public VerifyMerchantTransactionRequest(WSContext wsContext, string token, string refNum)
         {
             Guard.Against.Null(wsContext, nameof(wsContext));
             Guard.Against.NullOrEmpty(token, nameof(token));

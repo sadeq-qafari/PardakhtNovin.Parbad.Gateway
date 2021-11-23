@@ -1,8 +1,8 @@
-﻿namespace PardakhtNovin.Parbad.Gateway.Model
-{
-    using Ardalis.GuardClauses;
-    using System;
+﻿using System;
+using Ardalis.GuardClauses;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway.Model
+{
     [Serializable]
     public class SignedDataTokenRequest
     {

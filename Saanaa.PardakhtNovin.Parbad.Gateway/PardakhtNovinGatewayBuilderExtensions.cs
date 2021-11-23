@@ -1,10 +1,10 @@
-﻿namespace PardakhtNovin.Parbad.Gateway
-{
-    using global::Parbad;
-    using global::Parbad.GatewayBuilders;
-    using global::Parbad.InvoiceBuilder;
-    using System;
+﻿using System;
+using Parbad;
+using Parbad.GatewayBuilders;
+using Parbad.InvoiceBuilder;
 
+namespace Saanaa.PardakhtNovin.Parbad.Gateway
+{
     public static class PardakhtNovinGatewayBuilderExtensions
     {
         public static IGatewayConfigurationBuilder<PardakhtNovinGateway> AddPardakhtNovin(this IGatewayBuilder builder)
