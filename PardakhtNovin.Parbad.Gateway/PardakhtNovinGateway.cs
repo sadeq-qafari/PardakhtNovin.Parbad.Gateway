@@ -9,7 +9,6 @@
     using Microsoft.Extensions.Options;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -45,7 +44,7 @@
         {
             try
             {
-                var account = await GetAccountAsync();
+                var account = await GetAccountAsync(invoice);
                 await DoMerchantLoginAsync(account, cancellationToken);
                 var dataToSign = await GenerateDataToSignAsync(account, invoice, cancellationToken);
                 var token = await GetTokenFromSignedDataAsync(account, dataToSign, cancellationToken);
@@ -67,11 +66,18 @@
             }
         }
 
+        public override Task<IPaymentFetchResult> FetchAsync(InvoiceContext context, CancellationToken cancellationToken = new CancellationToken())
+        {
+            IPaymentFetchResult result = PaymentFetchResult.ReadyForVerifying();
+
+            return Task.FromResult(result);
+        }
+
         public override async Task<IPaymentVerifyResult> VerifyAsync(InvoiceContext context, CancellationToken cancellationToken = new CancellationToken())
         {
             try
             {
-                var account = await GetAccountAsync();
+                var account = await GetAccountAsync(context.Payment);
                 var paymentData = await ExtractPaymentDataFromBankResponseAsync(context, cancellationToken);
                 if (!paymentData.IsPaymentSuccessFul()) return PaymentVerifyResult.Failed(_messagesOptions.PaymentFailed);
 
@@ -100,16 +106,16 @@
             }
         }
 
-        #region Privates Request
-        private async Task<PardakhtNovinGatewayAccount> GetAccountAsync()
-        {
-            var accountProvider = await AccountProvider
-                .LoadAccountsAsync();
-            var account = accountProvider
-                .FirstOrDefault();
-            Guard.Against.Null(account, nameof(account));
-            return account;
-        }
+        #region Private Requests
+        // private async Task<PardakhtNovinGatewayAccount> GetAccountAsync()
+        // {
+        //     var accountProvider = await AccountProvider
+        //         .LoadAccountsAsync();
+        //     var account = accountProvider
+        //         .FirstOrDefault();
+        //     Guard.Against.Null(account, nameof(account));
+        //     return account;
+        // }
         private async Task DoMerchantLoginAsync(PardakhtNovinGatewayAccount account, CancellationToken cancellationToken)
         {
             _httpClient.DefaultRequestHeaders.ExpectContinue = false;
@@ -153,7 +159,7 @@
         }
         #endregion
 
-        #region Privates Verify
+        #region Private Verifies
         private async Task<NovinPardakhtPaymentData> ExtractPaymentDataFromBankResponseAsync(InvoiceContext context, CancellationToken cancellationToken)
         {
             var paymentData = new NovinPardakhtPaymentData();
@@ -212,7 +218,7 @@
         }
         #endregion
 
-        #region Privates Refund
+        #region Private Refunds
 
         private async Task RefundTransactionAsync(InvoiceContext context, CancellationToken cancellationToken,
             PardakhtNovinGatewayAccount account)
@@ -239,7 +245,7 @@
 
         #endregion
 
-        #region Privates
+        #region Private Actions
         private WSContext GenerateWSContext(PardakhtNovinGatewayAccount account)
         {
             return new WSContext(account.UserName, account.Password);
